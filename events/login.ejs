@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Events</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .jumbotron {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<div class="container">
+    <% include ../partials/navbar %>
+    <div class="jumbotron">
+        <h1>Login</h1>
+    </div>
+</div>
+<center>
+<body>
+<div class="container">
+    <form action="/login" method="post">
+    <div class="form-group">
+        <label>UserID:</label>
+        <input type="text" name="userid" placeholder="Enter User ID">
+    </div>
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Enter password">
+    </div>
+    <button class='btn btn-default' value="Login">Login</button>
+    </form> 
+</div>
+</body>
+</center>
+</html>
