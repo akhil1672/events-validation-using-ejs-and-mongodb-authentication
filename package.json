@@ -4,6 +4,7 @@
   "description": "",
   "main": "expressejs.js",
   "scripts": {
+    "start": "node expressejs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
