@@ -14,13 +14,18 @@
         }
     </style>
 </head>
-
-<body>
-    <div class="container">
-        <% include ../partials/navbar %>
-            <div class="jumbotron">
-                <h1>Angular events cannot be more fun without Node</h1>
-            </div> 
-    </div>
+<body style="background-color:rgb(111, 217, 221)">
+<div class="container">
+    <% include ../partials/navbar %>
+        <div class="jumbotron">
+            <h1>
+                <% if(name){%>
+                Hi <%= name %>
+                <% } %>
+                <br>
+                Success. You can now attend events
+            </h1>
+        </div>
+</div>
 </body>
 </html>
