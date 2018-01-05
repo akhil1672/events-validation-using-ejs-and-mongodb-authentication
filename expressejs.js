@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 let ejs = require('ejs');
-let mongoc = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/members";
+let mongojs = require('mongojs');
+let db = mongojs("mongodb://akhil1672:akhil1672@ds239587.mlab.com:39587/members1672", ['members']);
+//let mongoc = require('mongodb').MongoClient;
+//var uri = "mongodb://akhil1672:akhil1672@ds239587.mlab.com:39587/members1672";
 let uname,age,password='';
 let app = express();
 app.set('view engine','.ejs');
@@ -26,8 +28,7 @@ let agevalidate = function(req,res,next){
     }
     else
     {
-        mongoc.connect(url, function (err, db) {
-            db.collection('members').insertOne(obj, function (err1, res1) {
+            db.members.save(obj, function (err1, res1) {
                 if (err1) {
                     res.render('./events/loginerr');
                 }
@@ -36,8 +37,6 @@ let agevalidate = function(req,res,next){
                     res.render('./events/success',{name:''});
                           }    
             })
-            db.close();
-        })
     }
     next();
 }
@@ -50,8 +49,7 @@ let loginvalidate = function(req,res,next)
         res.render('./events/loginerr');
     }
     else{
-        mongoc.connect(url,function(err,db){
-            db.collection('members').findOne({uname:uname},function(err1,result){
+            db.members.findOne({uname:uname},function(err1,result){
                 let obj1=result;
                 //console.log(result);
                 //console.log(uname);
@@ -67,8 +65,6 @@ let loginvalidate = function(req,res,next)
                         res.render('./events/loginerr');
                 }
             })
-            db.close();
-        })
         
         //res.render('./events/home');
     }
